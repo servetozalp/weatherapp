@@ -1,0 +1,189 @@
+/*
+
+---01 TYPOGRAPHY SYSTEM---
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+--Font weights:
+Default: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+--Line heights:
+Default: 1
+Small: 1.05
+Paragraph: 1.6 
+
+-- Letter spacing
+0.5px
+
+
+
+---02 COLORS---
+
+Primary: 
+
+--Tints: 
+--Shades: 
+--Accents:
+--Greys: #555 #333 #767676
+
+---03 SHADOWS---
+
+---04 BORDER-RADIUS---
+
+---05 WHITESPACE---
+
+
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Lora", serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  background-color: #f3edef;
+}
+
+/***************************/
+/* HEADER SECTION */
+/***************************/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 9.6rem;
+  padding: 0 4.8rem;
+  border-bottom: solid 1px #ffadc9;
+}
+
+.header-links {
+  text-decoration: none;
+}
+
+.heading-först {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  color: #555;
+  animation-name: myAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.heading-tredje {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #555;
+  animation-name: myAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+  animation-name: myAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.social-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.social-link:link,
+.social-link:visited {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #ff3378;
+  transition: all 0.3s;
+}
+
+.social-link:hover,
+.social-link:active {
+  color: #555;
+}
+
+/***************************/
+/* HERO SECTION */
+/***************************/
+
+.section-hero {
+  padding: 4.8rem 0 6.4rem 0;
+}
+
+.app {
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.8rem;
+  align-items: center;
+  text-align: center;
+}
+
+.väder-img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.city {
+  font-size: 4.4rem;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
+
+.väder-icons {
+  margin-right: 2rem;
+}
+
+.andra-icons {
+  margin-right: 1.2rem;
+}
+
+.temperature {
+  font-size: 6.2rem;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
+
+.lufttryck {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
+
+.fuktighet {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
+
+.vind {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
