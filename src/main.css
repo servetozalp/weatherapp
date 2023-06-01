@@ -89,7 +89,7 @@ body {
   animation-timing-function: ease-in-out;
 }
 
-.heading-tredje {
+.time {
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.5;
@@ -143,6 +143,12 @@ body {
   gap: 4.8rem;
   align-items: center;
   text-align: center;
+}
+
+.all-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .väder-img {

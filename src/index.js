@@ -6,6 +6,10 @@ const timeEl = document.getElementById("time");
 const updatedTimeEl = document.getElementById("updatedTime");
 
 function appendTextNode(parentNode, text) {
+  var lastChild = parentNode.lastChild;
+  if (lastChild) {
+    parentNode.removeChild(lastChild);
+  }
   const textNode = document.createTextNode(text);
   parentNode.appendChild(textNode);
 }
@@ -28,14 +32,21 @@ const options = {
 function previewDate() {
   const date = new Date();
   const formattedDate = date.toLocaleString(locale, options);
-  //timeEl.textContent = formattedDate;
+  timeEl.textContent = formattedDate;
 }
 
-function createSVG(svgPath) {
+function createSVG(weatherKey) {
+  const svgPath = VisualData[weatherKey].svgPath; // SVGPath["Clear"];
   const svg = document.getElementById("weatherIcon"); // SVG elemanının id'sini belirtin veya yeni bir SVG elementi oluşturunvar path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  const titleElement = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "title"
+  );
+  titleElement.textContent = weatherKey;
+  path.setAttribute("d", svgPath);
 
-  path.setAttribute("d", svgPath); // Path verisini belirtin
+  svg.appendChild(titleElement);
   svg.appendChild(path);
 }
 
@@ -68,10 +79,9 @@ function fetchWeather() {
       appendTextNode(tempEl, `${weatherInfo.temp.toFixed(1)} °C`);
       const weatherKey = data.weather[0].main; // Clear
 
-      const svgPath = VisualData[weatherKey].svgPath; // SVGPath["Clear"];
       const imgPath = VisualData[weatherKey].imgPath; // SVGPath["Clear"];
 
-      createSVG(svgPath);
+      createSVG(weatherKey);
       setWeatherImage(imgPath);
 
       appendTextNode(pressureEl, `${weatherInfo.pressure} hPa`);
@@ -81,9 +91,9 @@ function fetchWeather() {
       // set updated date to html
       const date = new Date();
       const formattedDate = date.toLocaleString(locale, options);
-      updatedTimeEl.textContent = `Updated time : ${formattedDate}`;
+      updatedTimeEl.textContent = `Prognosen utfärdades  ${formattedDate}`;
     })
     .catch((error) => {
-      console.log("Hata:", error);
+      console.log("Fel", error);
     });
 }
