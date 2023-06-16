@@ -35,15 +35,15 @@ function previewDate() {
   timeEl.textContent = formattedDate;
 }
 
-function createSVG(weatherKey) {
+function createSVG(weatherKey, description) {
   const svgPath = VisualData[weatherKey].svgPath; // SVGPath["Clear"];
-  const svg = document.getElementById("weatherIcon"); // SVG elemanının id'sini belirtin veya yeni bir SVG elementi oluşturunvar path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  const svg = document.getElementById("weatherIcon");
   let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
   const titleElement = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "title"
   );
-  titleElement.textContent = weatherKey;
+  titleElement.textContent = description;
   path.setAttribute("d", svgPath);
 
   svg.appendChild(titleElement);
@@ -63,7 +63,7 @@ setInterval(fetchWeather, minute * 30);
 
 function fetchWeather() {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=sv&appid=${API_KEY}&units=metric`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -78,10 +78,11 @@ function fetchWeather() {
 
       appendTextNode(tempEl, `${weatherInfo.temp.toFixed(1)} °C`);
       const weatherKey = data.weather[0].main; // Clear
+      const description = data.weather[0].description;
 
       const imgPath = VisualData[weatherKey].imgPath; // SVGPath["Clear"];
 
-      createSVG(weatherKey);
+      createSVG(weatherKey, description);
       setWeatherImage(imgPath);
 
       appendTextNode(pressureEl, `${weatherInfo.pressure} hPa`);
@@ -94,6 +95,6 @@ function fetchWeather() {
       updatedTimeEl.textContent = `Prognosen utfärdades  ${formattedDate}`;
     })
     .catch((error) => {
-      console.log("Fel", error);
+      console.log("Error", error);
     });
 }
